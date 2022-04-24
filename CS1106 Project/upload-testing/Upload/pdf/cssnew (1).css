@@ -1,0 +1,367 @@
+:root{
+    --heading-font: 3rem;
+    --i-font: 1.5rem;
+    --infoheading-font: 1.5rem;
+    --ctext-font: 1rem;
+    --headingh2-font: 2.25rem;
+
+
+
+}
+body{
+    margin: 0;
+}
+
+#heading{
+    text-align: center;
+    color: white;
+    padding-top: 4%;
+    padding-bottom: 2%;
+    margin-bottom: 3%;
+    background: url("bg.jpg");
+    background-size: cover;
+    width: 100%;
+}
+
+#heading span{
+    color: white;
+    font-size: var(--heading-font);
+}
+
+#heading a{
+    color: white;
+}
+
+#heading a:hover{
+    border-bottom: solid .2vh white;
+}
+
+#map{
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0% 8%;
+}
+
+.googlemap{
+    width: 100%;
+}
+
+#info h3{
+    margin: 2% 0%;
+    color: gray;
+    font-size: var(--headingh2-font);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    
+}
+
+span{
+    padding-left: 2%;
+}
+
+#border_i {
+    border: .1rem orangered solid;
+    text-align: center;
+    height: fit-content;
+    font-size: var(--i-font);
+    padding: 2.5%;
+    color: orangered;
+    border-radius: 50%;
+    margin: 0% 4%;
+
+}
+
+.info_heading{
+    font-size: var(--infoheading-font);
+    color: orangered;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+}
+
+#lowerbox{
+    padding: 3% 6%;
+    display: flex;
+}
+#infodetail_card{
+    margin-bottom: 2%;
+    position: relative;
+    padding: 3% 0%;
+    display: flex;
+
+} 
+
+#infodetail{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all 0.2s linear;
+}
+
+
+.social_media li{
+    display: inline-block;
+    padding: 0% 5%;
+    
+}
+
+.social_media{
+    width: 100%;
+    padding-top: 2%;
+}
+
+.social_media i{
+    font-size: 1.4rem;
+    color: #32C1CE;
+}
+
+.social_media li :hover{
+        color: #32C1CE;
+        border-radius: .9rem;
+}
+
+.social_media li:nth-child(1) :hover{
+    color: blue;
+    border-radius: .9rem;
+}
+
+.social_media li:nth-child(2) :hover{
+    color: #32C1CE;
+    border-radius: .9rem;
+
+}
+
+.social_media li:nth-child(3) :hover{
+    color: purple;
+    border-radius: .9rem;
+
+}
+
+p{
+    padding: 0%;
+}
+.c_text{
+    font-size: var(--ctext-font);
+    color: rgb(97, 94, 94);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+#inform{
+    padding-left: 7%;
+
+}
+
+
+.input_box{
+    position: relative;
+   margin: 5% 0;
+}
+
+.input_box input{
+    border: .1rem solid gray;
+    border-radius: 2rem;
+    height: 3rem;
+    width: 80%;
+    padding: 1% 2%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+ 
+}
+
+.input_box textarea{
+    border: .1rem solid gray;
+    border-radius: 2rem;
+    height: 9vh;
+    width: 80%;
+    padding: 1% 2%;
+    height: 15rem;
+   padding-left: 4%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+#inform .formtext{
+    color: #6b7070;
+    padding-left: 2.5%;
+    font-size: 1rem;
+}
+
+
+.input_box textarea:focus ~ label,
+.input_box textarea:valid ~ label{
+   top: -14%;
+   left: 0;
+   color: orangered;
+}
+
+.input_box input:focus ~ label,
+.input_box input:valid ~ label{
+   top: -80%;
+   left: 0;
+   color: orangered;
+}
+
+.input_box label{
+   position: absolute;
+   color: #6b7070;
+   font-size: 1rem;
+   top: 0;
+   left: 0;
+   padding-left: 2%;
+   padding-top: 1.4%;
+   transition: 0.5s;
+
+}
+
+input[type=submit]{
+    color: white;
+    background-color: orangered;
+    border-radius: 30%;
+    border: none;
+    padding: .4rem;
+    width: 5rem;
+    margin-left: 2%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;    
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: 'Rubik', sans-serif;
+
+
+}
+
+/* Media Queries */
+
+@media (max-width: 500px){
+    :root{
+        --heading-font: 2rem;
+        --headingh2-font: 1.5rem;
+        --i-font:1.1rem;
+        --infoheading-font: 1rem;
+        --ctext-font: .8rem;
+
+    }
+    #lowerbox{
+        display: flex;
+        flex-direction: column;   
+        padding: 3% 4%;
+
+    } 
+    
+    #infodetail{
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        transition: all 0.2s linear;
+        margin: 0%;
+    }
+
+    .input_box input{
+        border: .1rem solid gray;
+        border-radius: 2rem;
+        height: 2rem;
+        width: 80%;
+        margin-top: 5%;
+        padding-left: 5%;
+     
+    }
+    
+    .input_box textarea{
+        border: .1rem solid gray;
+        border-radius: 2rem;
+        width: 80%;
+        padding: 1% 2%;
+        height: 12rem;
+        margin-top: 5%;
+        padding-left: 10%;
+
+    }
+    
+    .input_box textarea:focus ~ label,
+    .input_box textarea:valid ~ label{
+       top: -14%;
+       left: 0;
+       color: orangered;
+    }
+    
+    .input_box input:focus ~ label,
+    .input_box input:valid ~ label{
+       top: -60%;
+       left: 0;
+       color: orangered;
+    }
+    
+    .input_box label{
+       position: absolute;
+       color: #6b7070;
+       font-size: .8rem;
+       top: 0;
+       left: 0;
+       padding-left: 5%;
+       padding-top: 7%;
+       transition: 0.5s;
+    
+    }
+    #inform {
+        margin-top: 6%;
+    }
+
+    #inform .formtext{
+        color: #6b7070;
+        padding-left: 2%;
+        font-size: .8rem;
+    }
+
+    .social_media i{
+        font-size: 1rem;
+        color: #32C1CE;
+    }
+
+    input[type=submit]{
+        color: white;
+        background-color: orangered;
+        border-radius: 30%;
+        border: none;
+        padding: .3rem;
+        width: 3.5rem;
+        margin-left: 4%;
+        font-size: .8rem;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;    
+    }
+}
+
+
+
+@media (max-width: 1200px) and (min-width: 500px){
+    :root{
+        --heading-font: 2rem;
+        --headingh2-font: 1.8rem;
+        --i-font:1.4rem;
+        --infoheading-font: 1.2rem;
+        --ctext-font: 1rem;
+
+    }
+
+    .input_box textarea{
+        border: .1rem solid gray;
+        border-radius: 2rem;
+        height: 9vh;
+        width: 80%;
+        padding: 1% 2%;
+        height: 15rem;
+       padding-left: 8%;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    }
+
+}
+
+@media (min-width: 1200px){
+    :root{
+    --heading-font: 3rem;
+    --i-font: 2rem;
+    --infoheading-font: 1.5rem;
+    --ctext-font: 1rem;
+    --headingh2-font: 2.25rem;
+    }
+
+
+}
+

@@ -1,0 +1,489 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database Lab-10-03;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near
+ '-10-03' at line 1
+mysql> create database LabActivity;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| groupb             |
+| information_schema |
+| labactivity        |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.05 sec)
+
+mysql> use labactivity;
+Database changed
+mysql> create table locations(location_id,street_address,postal_code,city,state_province,country
+    -> quit
+    -> quit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use
+ near ',street_address,postal_code,city,state_province,country
+quit
+quit' at line 1
+mysql> create table locations(location_id varchar(20),street_address varchar(30) ,postal_code varchar(10),city varchar(30),state_province varchar(30),
+country_id(20));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use 
+near '(20))' at line 1
+mysql> create table locations(location_id varchar(20),street_address varchar(30) ,postal_code varchar(10),city varchar(30),state_province varchar(30),
+country_id varchar(20));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> drop locations;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use 
+near 'locations' at line 1
+mysql> drop table locations;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table locations(location_id varchar(20) primary key,street_address varchar(30) not null,postal_code varchar(10) not null,city varchar(30)
+ not null,state_province varchar(30) not null,country_id varchar(20) not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table Departments(dept_id varchar(10) primary key,dept_name varchar(30) not null,mgr_id varchar(10) not null,location_id varchar(20)
+ not null, foregin key (location_id) reference from locations(location_id));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use
+ near 'key (location_id) reference from locations(location_id))' at line 1
+mysql> create table Departments(dept_id varchar(10) primary key,dept_name varchar(30) not null,mgr_id varchar(10) not null,location_id varchar(20)
+ not null, foreign key (location_id) references locations(location_id));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table Employees(emp_id, name, hire_date, job_id, salary,comm_ pct,mgr_id,
+    -> quit;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use
+ near ', name, hire_date, job_id, salary,comm_ pct,mgr_id,
+quit' at line 1
+mysql> , create table Jobs(job_id varchar(10) primary key, job_title varchar(30) not null, min_salary numeric(10) not null, max_salary numeric(10)
+ not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to 
+use near ', create table Jobs(job_id varchar(10) primary key, job_title varchar(30) not nu' at line 1
+mysql> create table Jobs(job_id varchar(10) primary key, job_title varchar(30) not null, min_salary numeric(10) not null, max_salary numeric(10) 
+not null);
+Query OK, 0 rows affected (0.03 sec)
+
+
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| groupb             |
+| information_schema |
+| labactivity        |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.32 sec)
+
+mysql> use labactivity;
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_labactivity |
++-----------------------+
+| departments           |
+| employees             |
+| job_history           |
+| jobs                  |
+| locations             |
++-----------------------+
+5 rows in set (0.04 sec)
+
+mysql>
+mysql> desc locations;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| location_id    | varchar(20) | NO   | PRI | NULL    |       |
+| street_address | varchar(30) | NO   |     | NULL    |       |
+| postal_code    | varchar(10) | NO   |     | NULL    |       |
+| city           | varchar(30) | NO   |     | NULL    |       |
+| state_province | varchar(30) | NO   |     | NULL    |       |
+| country_id     | varchar(20) | NO   |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+mysql> insert into locations(location_id, Street_address,postal_code, city,state_province,country_id) values('1000', 'via cola di', ' York', 0.15);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into locations(location_id, Street_address,postal_code, city,state_province,country_id) values('1000', 'via cola di','989','roma','roma','IT');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into locations(location_id, Street_address,postal_code, city,state_province,country_id) values('1200', 'shinjuku-ku','1689','tokyo',
+'tokyo prefecture','jp');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into locations(location_id, Street_address,postal_code, city,state_province,country_id) values('1600', 'Jabber wocky','26192','south lake',
+'Texas','us');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into locations(location_id, Street_address,postal_code, city,state_province,country_id) values('1800', 'Zagora st','50090','south brun swick',
+'new Jersev','us');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into locations(location_id, Street_address,postal_code, city,state_province,country_id) values('1000', 'via cola di','989','roma','roma','^C;
+mysql> ^C
+mysql> insert into locations(location_id, Street_address,postal_code, city,state_province,country_id) values('2000', 'spadina','M5v2l7','Toronto','ontario',
+'CA');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into locations(location_id, Street_address,postal_code, city,state_province,country_id) values('1400','laogianggen','190518','beijng','beijng'
+,'CN');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from locations;
++-------------+----------------+-------------+------------------+------------------+------------+
+| location_id | street_address | postal_code | city             | state_province   | country_id |
++-------------+----------------+-------------+------------------+------------------+------------+
+| 1000        | via cola di    | 989         | roma             | roma             | IT         |
+| 1200        | shinjuku-ku    | 1689        | tokyo            | tokyo prefecture | jp         |
+| 1400        | laogianggen    | 190518      | beijng           | beijng           | CN         |
+| 1600        | Jabber wocky   | 26192       | south lake       | Texas            | us         |
+| 1800        | Zagora st      | 50090       | south brun swick | new Jersev       | us         |
+| 2000        | spadina        | M5v2l7      | Toronto          | ontario          | CA         |
++-------------+----------------+-------------+------------------+------------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into departments(dept_id,dept_name,mgr_id,location_id) values('10','Administration','200','1000');
+Query OK, 1 row affected (0.02 sec)
+
+mysql>  insert into departments(dept_id,dept_name,mgr_id,location_id) values('20','Marketing','106','1800');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into departments(dept_id,dept_name,mgr_id,location_id) values('30','Purchasing','114','2000');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into departments(dept_id,dept_name,mgr_id,location_id) values('40','Human Resources','203','1400');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into departments(dept_id,dept_name,mgr_id,location_id) values('50','Shopping','121','1600');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into departments(dept_id,dept_name,mgr_id,location_id) values('60','IT','103','1200');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from departments;
++---------+-----------------+--------+-------------+
+| dept_id | dept_name       | mgr_id | location_id |
++---------+-----------------+--------+-------------+
+| 10      | Administration  | 200    | 1000        |
+| 20      | Marketing       | 106    | 1800        |
+| 30      | Purchasing      | 114    | 2000        |
+| 40      | Human Resources | 203    | 1400        |
+| 50      | Shopping        | 121    | 1600        |
+| 60      | IT              | 103    | 1200        |
++---------+-----------------+--------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> desc jobs;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| job_id     | varchar(10)   | NO   | PRI | NULL    |       |
+| job_title  | varchar(30)   | NO   |     | NULL    |       |
+| min_salary | decimal(10,0) | NO   |     | NULL    |       |
+| max_salary | decimal(10,0) | NO   |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> inseet into jobs(job_id,job_title,Min_salary,Max_salary) values('AD_Coord','Coordinator',20000,25000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use 
+near 'inseet into jobs(job_id,job_title,Min_salary,Max_salary) values('AD_Coord','Coor' at line 1
+mysql> insert into jobs(job_id,job_title,Min_salary,Max_salary) values('AD_Coord','Coordinator',20000,25000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into jobs(job_id,job_title,Min_salary,Max_salary) values('AD_sp','Specialist',15000,20000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into jobs(job_id,job_title,Min_salary,Max_salary) values('IT_prog','programmer',25000,30000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into jobs(job_id,job_title,Min_salary,Max_salary) values('Pu_man','purchasing man',15000,20000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into jobs(job_id,job_title,Min_salary,Max_salary) values('ma_man','marketing man',15000,20000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from jobs;
++----------+----------------+------------+------------+
+| job_id   | job_title      | min_salary | max_salary |
++----------+----------------+------------+------------+
+| AD_Coord | Coordinator    |      20000 |      25000 |
+| AD_sp    | Specialist     |      15000 |      20000 |
+| IT_prog  | programmer     |      25000 |      30000 |
+| ma_man   | marketing man  |      15000 |      20000 |
+| Pu_man   | purchasing man |      15000 |      20000 |
++----------+----------------+------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> desc employees;
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| emp_id    | varchar(10)   | NO   | PRI | NULL    |       |
+| name      | varchar(30)   | NO   |     | NULL    |       |
+| hire_date | varchar(30)   | NO   |     | NULL    |       |
+| job_id    | varchar(10)   | YES  | MUL | NULL    |       |
+| salary    | decimal(10,0) | NO   |     | NULL    |       |
+| comm_pct  | decimal(10,2) | YES  |     | NULL    |       |
+| mgr_id    | varchar(10)   | YES  |     | NULL    |       |
+| dept_id   | varchar(10)   | YES  | MUL | NULL    |       |
++-----------+---------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('100','steven','2003-06-17','AD_coord',24000,0,'200','10');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('101','neena','2005-09-21','AD_sp',17000,0,'200','10');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('200','lex','2001-01-13','AD_sp',17000,0,'200','10');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('103','Alexander','2006-01-03','IT_prog',26000,0,'103',
+'60');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('114','Burce','2007-05-21','Pu_man',15000,0,'114','30');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('121','David','2005-06-25','SH_clerk',10000,0,'121','50');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`labactivity`.`employees`, CONSTRAINT `employees_ibfk_1` FOREIGN
+ KEY (`job_id`) REFERENCES `jobs` (`job_id`))
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('121','David','2005-06-25','SH_crk',10000,0,'121','50'););
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`labactivity`.`employees`, CONSTRAINT `employees_ibfk_1` FOREIGN 
+KEY (`job_id`) REFERENCES `jobs` (`job_id`))
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use 
+near ')' at line 1
+mysql> insert into jobs(job_id,job_title,Min_salary,Max_salary) values('SH_clerk','shopping clerk',10000,15000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into jobs(job_id,job_title,Min_salary,Max_salary) values('HR_head','human resource head',20000,25000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('121','David','2005-06-25','SH_clerk',10000,0,'121','50');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('106','valli','2006-02-25','MA_man',16000,0,'106','20');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employees(emp_id,name,hire_date,job_id,salary,comm_pct,mgr_id,dept_id) values('203','Danny','2006-02-05','HR_head',11000,0,'203','40');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc job_history;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| emp_id     | varchar(10) | NO   | PRI | NULL    |       |
+| start_date | varchar(30) | NO   |     | NULL    |       |
+| end_date   | varchar(30) | NO   |     | NULL    |       |
+| job_id     | varchar(10) | NO   | PRI | NULL    |       |
+| dept_id    | varchar(10) | NO   | PRI | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('100','2003-06-19',,'2005-09-21','AD_coord','10'):
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use 
+near ','2005-09-21','AD_coord','10'):' at line 1
+mysql> insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('100','2003-06-19','2005-09-21','AD_coord','10')
+    -> ;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('101','2005-09-21','2006-01-05','AD_sp','10');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('102','2001-01-14','2003-06-19','AD_sp','10');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`labactivity`.`job_history`, CONSTRAINT `job_history_ibfk_1` 
+FOREIGN KEY (`emp_id`) REFERENCES `employees` (`emp_id`))
+mysql>  insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('200','2001-01-14','2003-06-19','AD_sp','10');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('103','2006-01-05','2007-05-21','IT_prog','60');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('114','2007-05-24','2009-05-30','pu_man','30');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('121','2005-06-26','2007-05-22','SH_clerk','50');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('106','2006-02-07','2008-05-24','MA_man','20');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into job_history(emp_id,start_date,end_date,job_id,dept_id) values('203','2006-02-10','2008-05-21','HR_head','40');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from job_histry;
+ERROR 1146 (42S02): Table 'labactivity.job_histry' doesn't exist
+mysql> select *from job_history;
++--------+------------+------------+----------+---------+
+| emp_id | start_date | end_date   | job_id   | dept_id |
++--------+------------+------------+----------+---------+
+| 100    | 2003-06-19 | 2005-09-21 | AD_coord | 10      |
+| 101    | 2005-09-21 | 2006-01-05 | AD_sp    | 10      |
+| 103    | 2006-01-05 | 2007-05-21 | IT_prog  | 60      |
+| 106    | 2006-02-07 | 2008-05-24 | MA_man   | 20      |
+| 114    | 2007-05-24 | 2009-05-30 | pu_man   | 30      |
+| 121    | 2005-06-26 | 2007-05-22 | SH_clerk | 50      |
+| 200    | 2001-01-14 | 2003-06-19 | AD_sp    | 10      |
+| 203    | 2006-02-10 | 2008-05-21 | HR_head  | 40      |
++--------+------------+------------+----------+---------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT  NAME,SALARY,DEPT_ID FROM EMPLOYEES ORDER BY SALARY LIMIT 1;
++-------+--------+---------+
+| NAME  | SALARY | DEPT_ID |
++-------+--------+---------+
+| David |  10000 | 50      |
++-------+--------+---------+
+1 row in set (0.01 sec)
+
+mysql> select * from employees;
++--------+-----------+------------+----------+--------+----------+--------+---------+
+| emp_id | name      | hire_date  | job_id   | salary | comm_pct | mgr_id | dept_id |
++--------+-----------+------------+----------+--------+----------+--------+---------+
+| 100    | steven    | 2003-06-17 | AD_coord |  24000 |     0.00 | 200    | 10      |
+| 101    | neena     | 2005-09-21 | AD_sp    |  17000 |     0.00 | 200    | 10      |
+| 103    | Alexander | 2006-01-03 | IT_prog  |  26000 |     0.00 | 103    | 60      |
+| 106    | valli     | 2006-02-25 | MA_man   |  16000 |     0.00 | 106    | 20      |
+| 114    | Burce     | 2007-05-21 | Pu_man   |  15000 |     0.00 | 114    | 30      |
+| 121    | David     | 2005-06-25 | SH_clerk |  10000 |     0.00 | 121    | 50      |
+| 200    | lex       | 2001-01-13 | AD_sp    |  17000 |     0.00 | 200    | 10      |
+| 203    | Danny     | 2006-02-05 | HR_head  |  11000 |     0.00 | 203    | 40      |
++--------+-----------+------------+----------+--------+----------+--------+---------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT EMP_ID,NAME FROM EMPLOYEES WHERE SALARY>(SELECT AVG(SALARY) FROM EMPLOYEES);
++--------+-----------+
+| EMP_ID | NAME      |
++--------+-----------+
+| 100    | steven    |
+| 103    | Alexander |
++--------+-----------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE EMP_ID IN (134,159,183);
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE SALARY>=1000 AND SALARY<=3000;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE SALARY<=2500 AND SALARY>=(SELECT MIN(SALARY) FROM EMPLOYEES);
+Empty set (0.18 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE EMP_ID IN (103,121,203);
++--------+-----------+------------+----------+--------+----------+--------+---------+
+| emp_id | name      | hire_date  | job_id   | salary | comm_pct | mgr_id | dept_id |
++--------+-----------+------------+----------+--------+----------+--------+---------+
+| 103    | Alexander | 2006-01-03 | IT_prog  |  26000 |     0.00 | 103    | 60      |
+| 121    | David     | 2005-06-25 | SH_clerk |  10000 |     0.00 | 121    | 50      |
+| 203    | Danny     | 2006-02-05 | HR_head  |  11000 |     0.00 | 203    | 40      |
++--------+-----------+------------+----------+--------+----------+--------+---------+
+3 rows in set (0.02 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE SALARY>=10000 AND SALARY<=30000;
++--------+-----------+------------+----------+--------+----------+--------+---------+
+| emp_id | name      | hire_date  | job_id   | salary | comm_pct | mgr_id | dept_id |
++--------+-----------+------------+----------+--------+----------+--------+---------+
+| 100    | steven    | 2003-06-17 | AD_coord |  24000 |     0.00 | 200    | 10      |
+| 101    | neena     | 2005-09-21 | AD_sp    |  17000 |     0.00 | 200    | 10      |
+| 103    | Alexander | 2006-01-03 | IT_prog  |  26000 |     0.00 | 103    | 60      |
+| 106    | valli     | 2006-02-25 | MA_man   |  16000 |     0.00 | 106    | 20      |
+| 114    | Burce     | 2007-05-21 | Pu_man   |  15000 |     0.00 | 114    | 30      |
+| 121    | David     | 2005-06-25 | SH_clerk |  10000 |     0.00 | 121    | 50      |
+| 200    | lex       | 2001-01-13 | AD_sp    |  17000 |     0.00 | 200    | 10      |
+| 203    | Danny     | 2006-02-05 | HR_head  |  11000 |     0.00 | 203    | 40      |
++--------+-----------+------------+----------+--------+----------+--------+---------+
+8 rows in set (0.01 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE SALARY<=25000 AND SALARY>=(SELECT MIN(SALARY) FROM EMPLOYEES);
++--------+--------+------------+----------+--------+----------+--------+---------+
+| emp_id | name   | hire_date  | job_id   | salary | comm_pct | mgr_id | dept_id |
++--------+--------+------------+----------+--------+----------+--------+---------+
+| 100    | steven | 2003-06-17 | AD_coord |  24000 |     0.00 | 200    | 10      |
+| 101    | neena  | 2005-09-21 | AD_sp    |  17000 |     0.00 | 200    | 10      |
+| 106    | valli  | 2006-02-25 | MA_man   |  16000 |     0.00 | 106    | 20      |
+| 114    | Burce  | 2007-05-21 | Pu_man   |  15000 |     0.00 | 114    | 30      |
+| 121    | David  | 2005-06-25 | SH_clerk |  10000 |     0.00 | 121    | 50      |
+| 200    | lex    | 2001-01-13 | AD_sp    |  17000 |     0.00 | 200    | 10      |
+| 203    | Danny  | 2006-02-05 | HR_head  |  11000 |     0.00 | 203    | 40      |
++--------+--------+------------+----------+--------+----------+--------+---------+
+7 rows in set (0.01 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE SALARY=(SELECT MAX(SALARY) FROM EMPLOYEES);
++--------+-----------+------------+---------+--------+----------+--------+---------+
+| emp_id | name      | hire_date  | job_id  | salary | comm_pct | mgr_id | dept_id |
++--------+-----------+------------+---------+--------+----------+--------+---------+
+| 103    | Alexander | 2006-01-03 | IT_prog |  26000 |     0.00 | 103    | 60      |
++--------+-----------+------------+---------+--------+----------+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES ORDER BY SALARY DESC LIMIT 1,1;
++--------+--------+------------+----------+--------+----------+--------+---------+
+| emp_id | name   | hire_date  | job_id   | salary | comm_pct | mgr_id | dept_id |
++--------+--------+------------+----------+--------+----------+--------+---------+
+| 100    | steven | 2003-06-17 | AD_coord |  24000 |     0.00 | 200    | 10      |
++--------+--------+------------+----------+--------+----------+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> SELECT EMP_ID,NAME,JOB_TITLE FROM EMPLOYEES,JOBS WHERE SALARY< ANY (SELECT SALARY FROM EMPLOYEES WHERE JOB_ID = 'MA_MAN');
++--------+-------+---------------------+
+| EMP_ID | NAME  | JOB_TITLE           |
++--------+-------+---------------------+
+| 203    | Danny | Coordinator         |
+| 121    | David | Coordinator         |
+| 114    | Burce | Coordinator         |
+| 203    | Danny | Specialist          |
+| 121    | David | Specialist          |
+| 114    | Burce | Specialist          |
+| 203    | Danny | human resource head |
+| 121    | David | human resource head |
+| 114    | Burce | human resource head |
+| 203    | Danny | programmer          |
+| 121    | David | programmer          |
+| 114    | Burce | programmer          |
+| 203    | Danny | marketing man       |
+| 121    | David | marketing man       |
+| 114    | Burce | marketing man       |
+| 203    | Danny | purchasing man      |
+| 121    | David | purchasing man      |
+| 114    | Burce | purchasing man      |
+| 203    | Danny | shopping clerk      |
+| 121    | David | shopping clerk      |
+| 114    | Burce | shopping clerk      |
++--------+-------+---------------------+
+21 rows in set (0.02 sec)
