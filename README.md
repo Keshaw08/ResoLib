@@ -22,3 +22,9 @@ To create an online platform where students can share educational resources to h
 •	Database Connectivity
 •	Searching Files Functionality
 •	Separate Dashboard for Admin
+
+
+# Technology Stack
+To develop the Interactive Frontend Application we used HTML, CSS, Bootstrap and PHP to handle the logic, authentication, and communication with the database.
+We used the MySQL database to store all the data required by our application.
+
