@@ -1,0 +1,65 @@
+body{
+    background-image: url("background.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    color:#fff;
+  }
+
+.comment{
+    margin-top:6%;
+    width:100%;
+    height:40%;
+  }
+.course{
+    margin-top:10%;
+    margin-bottom:3%;
+}
+
+.insertion-box{
+    border-radius:5%;
+    width: 35%;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 30px;
+    /* background: rgb(63,94,251);
+    background: radial-gradient(circle,transparent, rgba(63,94,251,1) 14%, rgba(252,70,107,1) 83%); */
+    background: rgb(63,94,251);
+    background: linear-gradient(90deg, transparent, rgba(63,94,251,0.9) 14%, rgba(252,70,107,0.8) 83%);
+    /* background: linear-gradient(135deg, transparent, rgba(255,0,0,0.7),rgba(255,255,255,0.3),rgba(0, 0, 255, 0.9)); */
+}
+
+#pdf{
+    margin-top:10%;
+  }
+  label{
+    color:#fff;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  #pdf{
+    font-size: 20px;
+    font-weight: bold;
+    /* margin-top: 10px; */
+  }
+  #upload{
+    font-size: 20px;
+    font-weight: bold;
+    color:#666;
+    border:2px #fff solid;
+    border-radius:10%;
+    margin-left: 40%;
+  }
+  #upload:hover{
+    /* background-color:lightcyan; */
+    background-color:skyblue;
+    border:2px skyblue solid;
+  }
+
+  .logo-img{
+    width: 12%;
+    height: 10%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }

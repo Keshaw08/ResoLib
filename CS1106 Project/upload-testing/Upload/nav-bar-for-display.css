@@ -1,0 +1,105 @@
+body{
+  font-family: 'Signika', sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.25;
+  margin-right: 0;
+  /* overflow-x: hidden;
+  overflow: hidden; */
+  background-color: #EFFFFD;
+
+    overflow-x: hidden;
+}
+
+.container-fluid{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container-fluid .header{
+  margin: 0;
+}
+
+.navbar{
+  padding-left: 2%;
+  padding-right: 2%;
+    background: linear-gradient(-60deg,transparent,#0ab9cf 14%,#7535e7 28%,#0ab9cf 84%,rgba(0,196,204,0));
+
+    color: #fff;
+}
+
+.navbar-light{
+  color: #fff;
+}
+
+.dashboard h1{
+  display: block;
+  margin-left: 3%;
+  margin-top: 2%;
+  color: #42C2FF;
+  font-weight: bold;
+}
+
+.card-courses .collapse-card{
+  padding-top: 13%;
+  /* padding-left: 25%; */
+  text-align: center;
+  /* border: 1px black dotted; */
+
+}
+
+.collapse-card .card-box{
+    margin: 0;
+  text-align: center;
+  padding-top: 40%;
+  background-color: #B8FFF9;
+  font-size: 1.2rem;
+  letter-spacing: 1;
+  font-weight: 300;
+  color: #42C2FF;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 25%;
+
+}
+
+.btn-light{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 25%;
+}
+
+.collapse a{
+  text-decoration: none;
+  line-height: 1.5rem;
+}
+
+
+.card{
+  border: 0;
+  background-color: #EFFFFD;
+}
+
+.logo-img{
+  width: 12%;
+  height: 10%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+#forthYear{
+  padding-bottom: 10%;
+}
+
+.nav-upload {
+  justify-content: right;
+  color:#fff;
+}
+
+.nav-upload .btn-sm{
+  background-color: #B9F8D3;
+}
+
